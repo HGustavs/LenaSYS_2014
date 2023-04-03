@@ -2888,11 +2888,11 @@ function changeLineProperties()
             delete line.cardinality;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: undefined }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
-        else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
+        /*else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
            
             line.cardinality = cardinalityInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
-        }
+        }*/
         else if(line.cardinality != endCardinalituInputValue && endCardinalituInputValue!="") {
             line.cardinality = endCardinalituInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
