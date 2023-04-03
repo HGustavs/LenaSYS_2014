@@ -2882,18 +2882,20 @@ function changeLineProperties()
 
         // Change line - cardinality
         var cardinalityInputValue = document.getElementById('propertyCardinality').value;
+        var endCardinalituInputValue = document.getElementById('endPropertyCardinality').value;
 
         if (line.cardinality != undefined && cardinalityInputValue == ""){
             delete line.cardinality;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: undefined }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
-        } else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
-
-            line.cardinality = cardinalityInputValue;
+        }
+        else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
+            cardinalityInputValue.value = cardinalityInputValue.value.trim();
+            line.startLabel.cardinality = cardinalityInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
-        if(line.cardinality != cardinalityInputValue) {
-            
-            line.cardinality = cardinalityInputValue;
+        else if(line.cardinality != endCardinalituInputValue && endCardinalituInputValue!="") {
+            endCardinalituInputValue.value = endCardinalituInputValue.value.trim();
+            line.endLabel.cardinality = endCardinalituInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
     }
@@ -6194,7 +6196,7 @@ function generateContextProperties()
         if (contextLine[0].type == 'ER') {
             if (findAttributeFromLine(contextLine[0]) == null){
                 if (findEntityFromLine(contextLine[0]) != null){
-                    str += `<label style="display: block">Cardinality: <select id='propertyCardinality'>`;
+                    str += `<label style="display: block"> Start Cardinality: <select id='propertyCardinality'>`;
                     str  += `<option value=''>None</option>`
                     Object.keys(lineCardinalitys).forEach(cardinality => {
                         if (contextLine[0].cardinality != undefined && contextLine[0].cardinality == cardinality){
@@ -6204,7 +6206,7 @@ function generateContextProperties()
                         }
                     });
                     str += `</select></label>`;
-                    str += `<label style="display: block">Cardinality: <select id='propertyCardinality'>`;
+                    str += `<label style="display: block"> End Cardinality: <select id='endPropertyCardinality'>`;
                     str  += `<option value=''>None</option>`
                     Object.keys(lineCardinalitys).forEach(cardinality => {
                         if (contextLine[0].cardinality != undefined && contextLine[0].cardinality == cardinality){
