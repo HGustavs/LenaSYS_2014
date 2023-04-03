@@ -6189,7 +6189,8 @@ function generateContextProperties()
             if (findAttributeFromLine(contextLine[0]) == null){
                 if (findEntityFromLine(contextLine[0]) != null){
                     str += `<label style="display: block">Cardinality: <select id='propertyCardinality'>`;
-                    str  += `<option value=''>None</option>`
+                    str  += `<option value=''>Testing</option>`
+
                     str += `<input id="lineStartLabel" maxlength="50" type="text" placeholder="Start cardinality"`;
                     if(contextLine[0].startLabel.cardinality && contextLine[0].startLabel.cardinality != "") str += `<option value='${cardinality}'>${lineCardinalitys[cardinality]}</option>`;
                     str += `/>`;
