@@ -2889,13 +2889,12 @@ function changeLineProperties()
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: undefined }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
         else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
-            cardinalityInputValue.value = cardinalityInputValue.value.trim();
-            line.startLabel.cardinality = cardinalityInputValue;
+           
+            line.cardinality = cardinalityInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
         else if(line.cardinality != endCardinalituInputValue && endCardinalituInputValue!="") {
-            endCardinalituInputValue.value = endCardinalituInputValue.value.trim();
-            line.endLabel.cardinality = endCardinalituInputValue;
+            line.cardinality = endCardinalituInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
     }
