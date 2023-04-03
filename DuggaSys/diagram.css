@@ -568,3 +568,9 @@
 .options-fieldset-hidden {
     display: none;
 }
+.line-properties-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

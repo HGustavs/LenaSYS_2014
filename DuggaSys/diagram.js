@@ -2888,11 +2888,15 @@ function changeLineProperties()
             delete line.cardinality;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: undefined }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
-        /*else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
+        else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
            
             line.cardinality = cardinalityInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
-        }*/
+        }
+        if (line.cardinality != undefined && endCardinalityInputValue == ""){
+            delete line.cardinality;
+            stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: undefined }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
+        }
         else if(line.cardinality != endCardinalituInputValue && endCardinalituInputValue!="") {
             line.cardinality = endCardinalituInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
@@ -6195,6 +6199,7 @@ function generateContextProperties()
         if (contextLine[0].type == 'ER') {
             if (findAttributeFromLine(contextLine[0]) == null){
                 if (findEntityFromLine(contextLine[0]) != null){
+                    str += '<div class="line-properties-container">';
                     str += `<label style="display: block"> Start Cardinality: <select id='propertyCardinality'>`;
                     str  += `<option value=''>None</option>`
                     Object.keys(lineCardinalitys).forEach(cardinality => {
@@ -6218,6 +6223,7 @@ function generateContextProperties()
                     str += `<input id="lineLabel" maxlength="50" type="text" placeholder="Label..."`;
                     if(contextLine[0].label && contextLine[0].label != "") str += `value="${contextLine[0].label}"`;
                     str += `/>`;
+                    str += `/></div>`;
                 }
             }
         }
