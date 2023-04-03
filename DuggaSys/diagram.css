@@ -454,7 +454,28 @@
 .propertyCardinality{
     padding-left:3px;
     padding-right:3px;
-    background-color: #1f65cd;
+}
+#propertyCardinality {
+    position: absolute;
+    top: -25px;
+    left: -10px;
+}
+
+label[for="propertyCardinality"] {
+    position: absolute;
+    top: -45px;
+    left: -5px;
+}
+#endPropertyCardinality {
+    position: absolute;
+    top: -25px;
+    right: -10px;
+}
+
+label[for="endPropertyCardinality"] {
+    position: absolute;
+    top: -45px;
+    right: -5px;
 }
 /* REPLAY */
 #diagram-replay-box{
