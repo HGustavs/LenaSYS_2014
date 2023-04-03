@@ -2890,13 +2890,12 @@ function changeLineProperties()
         }
         else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
             line.cardinality = cardinalityInputValue;
-            line.fromID = cardinalityInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
         if(line.cardinality != endCardinalituInputValue && endCardinalituInputValue!="") {
+            //Sets the value of end cardinality and saves it.
             line.cardinality = endCardinalituInputValue;
-            line.toID = endCardinalituInputValue;
-            stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
+            stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: endCardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
     }
 
@@ -6206,6 +6205,7 @@ function generateContextProperties()
                         }
                     });
                     str += `</select></label>`;
+                    //Create another option menu for Cardinality that comes at the end of the line
                     str += `<label style="display: block"> End Cardinality: <select id='endPropertyCardinality'>`;
                     str  += `<option value=''>None</option>`
                     Object.keys(lineCardinalitys).forEach(cardinality => {
