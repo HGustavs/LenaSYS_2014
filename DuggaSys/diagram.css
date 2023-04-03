@@ -454,6 +454,7 @@
 .propertyCardinality{
     padding-left:3px;
     padding-right:3px;
+    background-color: #1f65cd;
 }
 /* REPLAY */
 #diagram-replay-box{
@@ -567,10 +568,4 @@
 }
 .options-fieldset-hidden {
     display: none;
-}
-.line-properties-container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
