@@ -2887,6 +2887,12 @@ function changeLineProperties()
             delete line.cardinality;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: undefined }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         } else if (line.cardinality != cardinalityInputValue && cardinalityInputValue != ""){
+
+            line.cardinality = cardinalityInputValue;
+            stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
+        }
+        if(line.cardinality != cardinalityInputValue) {
+            
             line.cardinality = cardinalityInputValue;
             stateMachine.save(StateChangeFactory.ElementAttributesChanged(contextLine[0].id, { cardinality: cardinalityInputValue }), StateChange.ChangeTypes.ELEMENT_ATTRIBUTE_CHANGED);
         }
@@ -6189,15 +6195,8 @@ function generateContextProperties()
             if (findAttributeFromLine(contextLine[0]) == null){
                 if (findEntityFromLine(contextLine[0]) != null){
                     str += `<label style="display: block">Cardinality: <select id='propertyCardinality'>`;
-                    str  += `<option value=''>Testing</option>`
+                    str  += `<option value=''>None</option>`
 
-                    str += `<input id="lineStartLabel" maxlength="50" type="text" placeholder="Start cardinality"`;
-                    if(contextLine[0].startLabel.cardinality && contextLine[0].startLabel.cardinality != "") str += `<option value='${cardinality}'>${lineCardinalitys[cardinality]}</option>`;
-                    str += `/>`;
-                    str += `<input id="lineEndLabel" maxlength="50" type="text" placeholder="End cardinality"`;
-                    if(contextLine[0].endLabel.cardinality && contextLine[0].endLabel.cardinality != "") str +=  str += `<option value='${cardinality}' selected>${lineCardinalitys[cardinality]}</option>`;
-                    str += `/>`;
-                    
                     Object.keys(lineCardinalitys).forEach(cardinality => {
                         if (contextLine[0].cardinality != undefined && contextLine[0].cardinality == cardinality){
                             str += `<option value='${cardinality}' selected>${lineCardinalitys[cardinality]}</option>`;
