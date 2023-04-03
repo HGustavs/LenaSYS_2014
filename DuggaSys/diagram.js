@@ -6203,6 +6203,7 @@ function generateContextProperties()
                             str += `<option value='${cardinality}'>${lineCardinalitys[cardinality]}</option>`;
                         }
                     });
+                    str += `</select></label>`;
                     str += `<label style="display: block">Cardinality: <select id='propertyCardinality'>`;
                     str  += `<option value=''>None</option>`
                     Object.keys(lineCardinalitys).forEach(cardinality => {
