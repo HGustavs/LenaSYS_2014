@@ -10816,12 +10816,7 @@ function updateCSSForAllElements()
                         }
                     } else{
                         fillColor.style.fill = `${element.fill}`;
-                        if (element.fill == "#000000") {
-                            fontColor = "#ffffff";
-                        } else {
-                            fontColor = "#000000";
-                        }
-                        //fontColor.style.fill = element.fill == "#000000" ||element.fill == "#DC267F" ? `${"#ffffff"}` : `${"#000000"}`;
+                        fontColor.style.fill = element.fill == "#000000" ||element.fill == "#DC267F" ? `${"#ffffff"}` : `${"#000000"}`;
                         if(element.state == "weakKey") {
                             weakKeyUnderline.style.stroke = `${"#000000"}`;
                             if (element.fill == "#000000") {
