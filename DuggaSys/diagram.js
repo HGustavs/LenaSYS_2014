@@ -10824,6 +10824,11 @@ function updateCSSForAllElements()
                             }
                         }
                     }
+                    if (fillColor == "#000000") {
+                        fontColor = "#ffffff";
+                    } else {
+                        fontColor = "#000000";
+                    }
                 }
             }
         }
