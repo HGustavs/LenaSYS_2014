@@ -10776,8 +10776,13 @@ function updateCSSForAllElements()
                             fontColor.style.fill = `${"#ffffff"}`;
                         } else{
                             fillColor.style.fill = `${element.fill}`;
-                            fontColor.style.fill = `${"#000000"}`;
-                             fontColor.style.fill = element.fill == "#000000" ||element.fill == "#DC267F" ? `${"#ffffff"}` : `${"#000000"}`;
+                            if (element.fill == "#000000") {
+                                fontColor.style.fill = `${"#ffffff"}`;
+                            }
+                            else{
+                                fontColor.style.fill = `${"#000000"}`;
+                            }
+                            //fontColor.style.fill = element.fill == "#000000" ||element.fill == "#DC267F" ? `${"#ffffff"}` : `${"#000000"}`;
                         }
                     }
                 }else{ // Update normal elements, and relations
