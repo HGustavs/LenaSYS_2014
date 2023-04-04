@@ -7042,7 +7042,7 @@ function drawLine(line, targetGhost = false)
     else{
         var strokeDash="0";
     }
-    var lineColor = '#ff0000';
+    var lineColor = '#000000';
     if(contextLine.includes(line)){
         lineColor = selectedColor;
     }
