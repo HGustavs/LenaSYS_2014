@@ -362,7 +362,7 @@
 			// Sort dialog - accessed / resulted /fileed					
 			//old search bar for resulted
       if($requestedService=="accessed.php" /*|| $requestedService=="resulted.php"*/ || $requestedService=="fileed.php" || $requestedService=="duggaed.php" ){
-					echo "<td id='testSearchContainer' class='navButt'>";
+					echo "<td id='testSearchContainer'";
 
 					if ($requestedService == "fileed.php")
 						echo   "<form onsubmit='event.preventDefault()' autocomplete='off'><input id='searchinput' readonly type='text' onmouseover='hoverSearch();' onmouseleave='leaveSearch();' name='search' placeholder='Search..' onkeyup='searchterm=this.value;sortAndFilterTogether();myTable.reRender();'/></form>";
@@ -413,7 +413,7 @@
       if($requestedService=="accessed.php"){
 					echo "<td id='select' class='navButt'>";
 					echo   "<span id='filterButton'>";
-					echo     "<img alt='filter icon' class='navButt' src='../Shared/icons/filter_icon.svg'>";
+					echo     "<img alt='filter icon' class='accesFilterButt' src='../Shared/icons/filter_icon.svg'>";
 					echo     "<div id='dropdownc' class='dropdown-list-container' style='z-index: 1'>";
 					echo       "<div id='filterOptions'></div>";
 					echo       "<div id='columnfilter'></div>";
