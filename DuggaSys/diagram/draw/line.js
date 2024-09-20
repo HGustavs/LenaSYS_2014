@@ -88,10 +88,11 @@
         let to = new Point(tx + offset.x2 * zoomfact, ty + offset.y2 * zoomfact);
         let from = new Point(fx + offset.x1 * zoomfact, fy + offset.y1 * zoomfact);
         if (line.startIcon == SDLineIcons.ARROW) {
-            str += drawArrowPoint(calculateArrowBase(to, from, 10 * zoomfact), from, fx, fy, lineColor, line, line.ctype);
+            str += drawArrowPoint(calculateArrowBase(to, from, 25 * zoomfact), from, fx, fy, lineColor, line, line.ctype);
+
         }
         if (line.endIcon == SDLineIcons.ARROW) {
-            str += drawArrowPoint(calculateArrowBase(from, to, 10 * zoomfact), to, tx, ty, lineColor, line, line.ctype.split('').reverse().join(''));
+            str += drawArrowPoint(calculateArrowBase(from, to, 25 * zoomfact), to, tx, ty, lineColor, line, line.ctype.split('').reverse().join(''));
         }
     }
     if (felem.type != entityType.ER || telem.type != entityType.ER) {
@@ -537,8 +538,8 @@ function calculateArrowBase(from, to, size) {
         Then we add these values to the end point to get the actual coordinates for the arrow base.
     */
     let ratio = size / Math.sqrt(Math.pow(from.x - to.x, 2) + Math.pow(from.y - to.y, 2));
-    let x = to.x + (from.x - to.x) * ratio;
-    let y = to.y + (from.y - to.y) * ratio;
+    let x = to.x + (from.x - to.x ) * ratio;
+    let y = to.y + (from.y - to.y ) * ratio;
     return new Point(x, y);
 }
 
@@ -550,9 +551,9 @@ function calculateArrowBase(from, to, size) {
  */
  function rotateArrowPoint(base, point, clockwise) {
     const angle = Math.PI / 4; 
-    const direction = clockwise ? 1 : -1; 
-    const dx = point.x - base.x;
-    const dy = point.y - base.y;
+    const direction = clockwise ? 1 : -1;
+    const dx = point.x - base.x ;
+    const dy = point.y - base.y ;
         return {
             x: base.x + (dx * Math.cos(direction * angle) - dy * Math.sin(direction * angle)),
             y: base.y + (dx * Math.sin(direction * angle) + dy * Math.cos(direction * angle))
@@ -561,14 +562,13 @@ function calculateArrowBase(from, to, size) {
      
 
 function drawArrowPoint(base, point, lineColor, strokeWidth) {
-    let right = rotateArrowPoint(base, point, true);
-    let left = rotateArrowPoint(base, point, false);
-    return ` 
-    <svg width="100" height="100">
-        <polygon points='${base.x},${base.y} ${right.x},${right.y} ${left.x},${left.y}'
-            stroke='${lineColor}' fill='none' stroke-width='${strokeWidth}' />
-    </svg>`;
- }
+    let right = rotateArrowPoint(point, base, true);
+    let left = rotateArrowPoint(point, base, false);
+        return `
+        <polygon points='${point.x},${point.y} ${left.x},${left.y} ${right.x},${right.y}'
+                 stroke='${lineColor}' fill='BLACK' stroke-width='${strokeWidth}'/>
+        `;
+}
 
 
 /**

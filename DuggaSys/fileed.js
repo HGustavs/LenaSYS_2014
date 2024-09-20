@@ -1054,4 +1054,3 @@ function checkIfPopupIsOpen() {
     return false;
 }
 
-
